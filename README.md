@@ -22,22 +22,22 @@ This software run only by command line interfaces (CLIs) such as the shell progr
 
 ### Examples
 
-1. Run this software to reproduce the results for Replay-Attack dataset:
+1. Run this software to reproduce the results from Replay-Attack dataset:
 >     
 >     spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/replayattack --facelocations_path datasets/replayattack/face-locations --output ./working --protocol intra_dataset
 >     
 
-1. Run this software to reproduce the results for CASIA FASD dataset:
+1. Run this software to reproduce the results from CASIA FASD dataset:
 >     
 >     spectralcubesantispoofing.py --dataset 1 --dataset_path datasets/casia --facelocations_path datasets/casia/face-locations --output ./working --protocol intra_dataset
 >     
 
-1. Run this software to reproduce the results for 3DMAD dataset:
+1. Run this software to reproduce the results from 3DMAD dataset:
 >     
 >     spectralcubesantispoofing.py --dataset 2 --dataset_path datasets/3dmad --facelocations_path datasets/3dmad/face-locations --output ./working --protocol intra_dataset
 >     
 
-1. Run this software to reproduce the results for UVAD dataset:
+1. Run this software to reproduce the results from UVAD dataset:
 >     
 >     spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/uvad --facelocations_path datasets/uvad/face-locations --output ./working --protocol intra_dataset
 >     
