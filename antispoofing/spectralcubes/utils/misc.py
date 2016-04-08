@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 # from antispoofing.spectralcubes.utils.constants import *
-import os
 import sys
 import operator
 import datetime
@@ -10,7 +9,12 @@ import itertools as it
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 from glob import glob
-from multiprocessing import Pool, cpu_count
+from multiprocessing import Pool, Value, Lock
+from antispoofing.spectralcubes.utils.constants import *
+
+
+counter = Value('i', 0)
+counter_lock = Lock()
 
 
 def modification_date(filename):
@@ -34,46 +38,82 @@ def total_time_elapsed(start, finish):
     return "{0:02d}+{1:02d}:{2:02d}:{3:02d}".format(elapsed.days, hours, minutes, seconds)
 
 
+def progressbar(name, current_task, total_task, bar_len=20):
+        percent = float(current_task) / total_task
+
+        progress = ""
+        for i in range(bar_len):
+            if i < int(bar_len * percent):
+                progress += "="
+            else:
+                progress += " "
+
+        print "\r{0}{1}: [{2}] {3}/{4} ({5:.1f}%).{6:30}".format(CONST.OK_GREEN, name, progress, current_task,
+                                                                 total_task, percent * 100, CONST.END),
+        sys.stdout.flush()
+
+
 def start_process():
     pass
 
 
-def do_something(d):
-    result = d.run()
+def launch_tasks(arg):
+
+    global counter
+    global counter_lock
+
+    index, n_tasks, task = arg
+
+    result = task.run()
+
+    with counter_lock:
+        # elapsed = datetime.datetime.now() - start_time
+        # time_rate = ((counter.value-1) * previous_time_rate + elapsed.total_seconds())/float(counter.value)
+        counter.value += 1
+        progressbar('-- RunInParallel', counter.value, n_tasks)
+        # print '\r{0}-- RunInParallel: {1} task(s) done.{2:30}'.format(CONST.OK_GREEN, counter.value, CONST.END),
+        # sys.stdout.flush()
+
     return result
 
 
-def progressbar(name, i, total, bar_len=20):
-    percent = float(i) / total
-
-    sys.stdout.write("\r")
-    progress = ""
-    for i in range(bar_len):
-        if i < int(bar_len * percent):
-            progress += "="
-        else:
-            progress += " "
-    sys.stdout.write("%s: [ %s ] %.2f%%" % (name, progress, percent * 100))
-    sys.stdout.flush()
-
-
 class RunInParallel(object):
+    def __init__(self, tasks, n_proc=N_JOBS):
 
-    def __init__(self, tasks, n_proc=(cpu_count() - 1)):
-        self._pool = Pool(initializer=start_process, processes=n_proc)
-        self._tasks = tasks
+        # -- private attributes
+        self.__pool = Pool(initializer=start_process, processes=n_proc)
+        self.__tasks = []
+
+        # -- public attributes
+        self.tasks = tasks
+
+    @property
+    def tasks(self):
+        return self.__tasks
+
+    @tasks.setter
+    def tasks(self, tasks_list):
+        self.__tasks = []
+        for i, task in enumerate(tasks_list):
+            self.__tasks.append((i, len(tasks_list), task))
 
     def run(self):
-        pool_outs = self._pool.map_async(do_something, self._tasks)
-        self._pool.close()
-        self._pool.join()
+        global counter
+        counter.value = 0
+
+        pool_outs = self.__pool.map_async(launch_tasks, self.tasks)
+        self.__pool.close()
+        self.__pool.join()
 
         try:
             work_done = [out for out in pool_outs.get() if out]
-            assert (len(work_done)) == len(self._tasks)
+            assert (len(work_done)) == len(self.tasks)
+
+            print '\n{0}-- finish.{1:30}'.format(CONST.OK_GREEN, CONST.END)
+            sys.stdout.flush()
 
         except AssertionError:
-            sys.stderr.write("ERROR: some objects could not be processed!\n")
+            print '\n{0}ERROR: some objects could not be processed!{1:30}\n'.format(CONST.ERROR, CONST.END)
             sys.exit(1)
 
 

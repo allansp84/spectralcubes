@@ -34,3 +34,4 @@ from antispoofing.spectralcubes.utils.constants import SCALE_FACTOR
 from antispoofing.spectralcubes.utils.constants import MIN_NEIGHBORS
 from antispoofing.spectralcubes.utils.constants import CASCADE_PATH
 from antispoofing.spectralcubes.utils.constants import N_JOBS
+from antispoofing.spectralcubes.utils.constants import CONST

@@ -36,3 +36,18 @@ _current_path = os.path.abspath(os.path.dirname(__file__))
 CASCADE_PATH = os.path.join(_current_path, 'haarcascade_frontalface_default.xml')
 
 N_JOBS = (cpu_count()-1) if ((cpu_count()) > 1) else 1
+
+
+class CONST:
+
+    def __init__(self):
+        pass
+
+    HEADER = '\033[95m'
+    OK_BLUE = '\033[94m'
+    OK_GREEN = '\033[92m'
+    WARNING = '\033[93m'
+    ERROR = '\033[91m'
+    END = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
