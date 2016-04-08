@@ -39,7 +39,7 @@ This software run only by command line interfaces (CLIs) such as the shell progr
 
 1. Run this software to reproduce the results for UVAD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/replayattack --facelocations_path datasets/replayattack/face-locations --output ./working --protocol intra_dataset
+>     spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/uvad --facelocations_path datasets/uvad/face-locations --output ./working --protocol intra_dataset
 >     
 
 ### Please, Cite our Work!
