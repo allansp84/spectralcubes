@@ -106,7 +106,7 @@ class RunInParallel(object):
         self.__pool.join()
 
         try:
-            work_done = [out for out in pool_outs.get() if out]
+            work_done = [out for out in pool_outs.get() if out==True]
             assert (len(work_done)) == len(self.tasks)
 
             print '\n{0}-- finish.{1:30}'.format(CONST.OK_GREEN, CONST.END)

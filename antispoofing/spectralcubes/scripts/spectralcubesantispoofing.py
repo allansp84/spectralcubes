@@ -252,15 +252,15 @@ def main():
     group_c.add_argument("--anova", action='store_true',
                          help="Argument used to fit the best configuration of the method (default=%(default)s)")
 
-    group_c.add_argument("--only_face", type=bool, default=True, metavar="",
+    group_c.add_argument("--only_face", type=bool, default=False, metavar="",
                         help="Spoofing detection using only the face region (default=%(default)s)")
-
-    group_c.add_argument("--video_type", type=str, metavar="", default=VIDEO_TYPE,
-                        help="Type of the videos to be loaded (default=%(default)s)")
 
     group_c.add_argument("--get_faceloc", type=bool, default=False, metavar="",
                         help="Argument used in cases in that the face locations annotation do not available " +
                              "(default=%(default)s)")
+
+    group_c.add_argument("--video_type", type=str, metavar="", default=VIDEO_TYPE,
+                        help="Type of the videos to be loaded (default=%(default)s)")
 
     group_c.add_argument("--frame_numbers", type=int, metavar="", default=0,
                         help="Number of frames considered during execution of the method (default=%(default)s)\n\n")
