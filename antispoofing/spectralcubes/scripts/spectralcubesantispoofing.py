@@ -9,7 +9,6 @@ from antispoofing.spectralcubes.datasets import *
 
 
 def running_anova(opts):
-
     dataset = registered_datasets[opts.dataset]
     data = dataset(opts.dataset_path)
 
@@ -51,7 +50,6 @@ def running_anova(opts):
 
 
 def running_cross_dataset(opts):
-
     print "Running CrossDataset Protocol"
 
     dataset = registered_datasets[opts.dataset_a]
@@ -83,7 +81,7 @@ def running_cross_dataset(opts):
         anova.execute_protocol()
 
 
-def running_original_protocol(opts):
+def running_intra_dataset_protocol(opts):
     dataset = registered_datasets[opts.dataset]
     data = dataset(opts.dataset_path)
 
@@ -207,97 +205,79 @@ def running_kfold_protocol(opts):
     protocol.execute_protocol()
 
 
-def running_misc_protocol(opts):
-    dataset = registered_datasets[opts.dataset]
-    data = dataset(opts.dataset_path)
-
-    if opts.output_path is not None:
-        data.output_path = opts.output_path
-
-    data.output_path = os.path.join(data.output_path,
-                                    str(data.__class__.__name__).lower(),
-                                    "misc_protocol")
-
-    protocol = MISCProtocol(data, opts.sample)
-    protocol.execute_protocol()
-
-    # results = retrieve_samples(data.output_path, 'result')
-    # devel_auc = creating_csv(results, opts.output_path, 'devel', 'auc')
-
-
-def running_for_one_sample(opts):
-    print "Running AnalizeProtocol"
-
-    dataset = registered_datasets[opts.dataset]
-    data = dataset(opts.dataset_path)
-
-    data.facelocations_path = opts.facelocations_path
-
-    data.output_path = os.path.join(opts.output_path,
-                                    str(data.__class__.__name__).lower(),
-                                    "analize")
-
-    anova = AnalizeProtocol(data, opts.sample)
-    anova.execute_protocol()
-
-
 def main():
-
     dataset_options = "Available datasets: "
     for k in sorted(registered_datasets.keys()):
         dataset_options += ("%s-%s  " % (k, registered_datasets[k].__name__))
 
-    parser = argparse.ArgumentParser(version='1.0')
-    parser.add_argument("--dataset", type=int, default=0, choices=range(len(registered_datasets)), help=dataset_options)
-    parser.add_argument("--dataset_a", type=int, default=0, choices=range(len(registered_datasets)), help="")
-    parser.add_argument("--dataset_b", type=int, default=0, choices=range(len(registered_datasets)), help="")
+    available_protocols = ["intra_dataset", "cross_dataset", "kfold"]
 
-    parser.add_argument("--dataset_path", type=str, metavar="str", default='', help="<dataset_path>")
-    parser.add_argument("--dataset_path_a", type=str, metavar="str", default='', help="")
-    parser.add_argument("--dataset_path_b", type=str, metavar="str", default='', help="")
+    parser = argparse.ArgumentParser(version='1.0', formatter_class=argparse.RawTextHelpFormatter)
 
-    parser.add_argument("--output_path", type=str, metavar="str", default='./working', help="<output_path>")
+    parser.add_argument("--protocol", type=str, default="intra_dataset", metavar="",
+                        choices=available_protocols,
+                        help="Protocol evaluation. " + "Allowed values are: " + ", ".join(available_protocols) +
+                             " (default=%(default)s)\n\n")
 
-    parser.add_argument("--anova_protocol", action='store_true')
-    parser.add_argument("--original_protocol", action='store_true')
-    parser.add_argument("--cross_dataset", action='store_true')
-    parser.add_argument("--misc_protocol", action='store_true')
-    parser.add_argument("--kfold_protocol", action='store_true')
+    group_a = parser.add_argument_group('Arguments used in the intra-dataset protocol')
+    group_a.add_argument("--dataset", type=int, default=0, metavar="", choices=range(len(registered_datasets)),
+                        help=dataset_options + "(default=%(default)s)")
 
-    parser.add_argument("--k", type=int, default=10, help="")
-    parser.add_argument("--sample", type=str, metavar="str", default='client020', help="(default=%(default)s)")
-    parser.add_argument("--analize", action='store_true')
-    parser.add_argument("--only_face", action='store_true')
-    parser.add_argument("--video_type", type=str, metavar="str", default=VIDEO_TYPE,
+    group_a.add_argument("--dataset_path", type=str, metavar="", default='./datasets/replayattack',
+                        help="Path to dataset (default=%(default)s)")
+
+    group_a.add_argument("--output_path", type=str, metavar="", default='./working',
+                        help="Path to output directory (default=%(default)s)")
+
+    group_a.add_argument('--facelocations_path', type=str, metavar='', default='./datasets/replayattack/face-locations',
+                        help='Path to directory containing the annotation to face locations (default=%(default)s)')
+
+    group_b = parser.add_argument_group('Arguments used in the cross-dataset protocol')
+    group_b.add_argument("--dataset_a", type=int, default=0, metavar="", choices=range(len(registered_datasets)),
+                        help=dataset_options + "(default=%(default)s)")
+
+    group_b.add_argument("--dataset_path_a", type=str, metavar="", default='./datasets/replayattack',
+                        help="Path to dataset (default=%(default)s)")
+
+    group_b.add_argument("--dataset_b", type=int, default=1, metavar="", choices=range(len(registered_datasets)),
+                        help=dataset_options + "(default=%(default)s)")
+
+    group_b.add_argument("--dataset_path_b", type=str, metavar="", default='./datasets/replayattack',
+                        help="Path to dataset (default=%(default)s)")
+
+    group_c = parser.add_argument_group('Other options')
+    group_c.add_argument("--k", type=int, metavar="", default=10,
+                        help="Number of fold considered in the k-fold cross validation (default=%(default)s)")
+
+    group_c.add_argument("--anova", action='store_true',
+                         help="Argument used to fit the best configuration of the method (default=%(default)s)")
+
+    group_c.add_argument("--only_face", type=bool, default=True, metavar="",
+                        help="Spoofing detection using only the face region (default=%(default)s)")
+
+    group_c.add_argument("--video_type", type=str, metavar="", default=VIDEO_TYPE,
                         help="Type of the videos to be loaded (default=%(default)s)")
-    parser.add_argument("--frame_numbers", type=int, metavar="int", default=0, help="(default=%(default)s)")
-    parser.add_argument('--facelocations_path', type=str, metavar='str', default='', help='<facelocations_path>')
 
-    parser.add_argument("--get_faceloc", action='store_true')
+    group_c.add_argument("--get_faceloc", type=bool, default=False, metavar="",
+                        help="Argument used in cases in that the face locations annotation do not available " +
+                             "(default=%(default)s)")
+
+    group_c.add_argument("--frame_numbers", type=int, metavar="", default=0,
+                        help="Number of frames considered during execution of the method (default=%(default)s)\n\n")
 
     opts = parser.parse_args()
 
-    if opts.analize:
-        if opts.sample is None:
-            print 'ERROR: --analize should be used with --sample'
-            sys.exit(0)
-        else:
-            running_for_one_sample(opts)
+    if opts.anova:
+        running_anova(opts)
 
-    elif opts.original_protocol:
-        running_original_protocol(opts)
+    elif 'intra_dataset' in opts.protocol:
+        running_intra_dataset_protocol(opts)
 
-    elif opts.kfold_protocol:
-        running_kfold_protocol(opts)
-
-    elif opts.misc_protocol:
-        running_misc_protocol(opts)
-
-    elif opts.cross_dataset:
+    elif 'cross_dataset' in opts.protocol:
         running_cross_dataset(opts)
 
-    elif opts.anova_protocol:
-        running_anova(opts)
+    elif 'kfold' in opts.protocol:
+        running_kfold_protocol(opts)
 
     else:
         print 'Protocol not found!'
