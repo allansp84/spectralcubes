@@ -29,17 +29,17 @@ This software run only by command line interfaces (CLIs) such as the shell progr
 
 1. Run this software to reproduce the results for CASIA FASD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/casia --facelocations_path datasets/casia/face-locations --output ./working --protocol intra_dataset
+>     spectralcubesantispoofing.py --dataset 1 --dataset_path datasets/casia --facelocations_path datasets/casia/face-locations --output ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results for 3DMAD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/3dmad --facelocations_path datasets/3dmad/face-locations --output ./working --protocol intra_dataset
+>     spectralcubesantispoofing.py --dataset 2 --dataset_path datasets/3dmad --facelocations_path datasets/3dmad/face-locations --output ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results for UVAD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/replayattack --facelocations_path datasets/replayattack/face-locations --output ./working --protocol intra_dataset
+>     spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/replayattack --facelocations_path datasets/replayattack/face-locations --output ./working --protocol intra_dataset
 >     
 
 ### Please, Cite our Work!
