@@ -10,7 +10,7 @@ Despite important recent advances, the vulnerability of biometric systems to spo
 The OpenCV Package 2.4.11 or later is required for use this software.
 
 The other requirements are python packages and are listed in **requirements.txt**.
-We provide a script, available in *antispoofing/spectralcubes/scripts/install_requirements.sh*, to install theses python requirements via **pip command**.    
+We provide a script *(install_requirements.sh)*, to install theses python requirements via **pip command**.    
 
 This software runs on Linux Operating systems, and we tested it by using Ubuntu 12.04 LTS.
 
