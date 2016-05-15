@@ -27,7 +27,7 @@ class TDTProtocol(Protocol):
 
         if self.data.__class__.__name__.lower() == 'replayattack':
 
-            llf_search_space = {'NTV': 300, 'LGF': 1, 'M': 4}
+            llf_search_space = {'NTV': 300, 'LGF': 1, 'M': 7}
             mlf_search_space = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
 
         elif self.data.__class__.__name__.lower() == 'casia':

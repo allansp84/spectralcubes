@@ -13,12 +13,7 @@ setup(
     description='Face Spoofing Detection Through Visual Codebooks of Spectral Temporal Cubes',
     long_description=open('README.md').read(),
 
-    packages=find_packages(exclude=['tests']),
-
-    setup_requires=['numpy==1.8.1'],
-    build_requires=['numpy==1.8.1'],
-
-    install_requires=open('requirements.txt').read().splitlines()[::-1],
+    packages=find_packages(where='antispoofing.spectralcubes', exclude=['tests']),
 
     entry_points={
         'console_scripts': [

@@ -12,7 +12,7 @@ The OpenCV Package 2.4.11 or later is required for use this software.
 The other requirements are python packages and are listed in **requirements.txt**.
 We provide a script *(install_requirements.sh)*, to install theses python requirements via **pip command**.    
 
-This software runs on Linux Operating systems, and we tested it by using Ubuntu 12.04 LTS.
+This software runs on Linux Operating systems, and we tested it by using Ubuntu 14.04 LTS.
 
 ### How to Use this Software?
 
@@ -24,17 +24,17 @@ This software run only by command line interfaces (CLIs) such as the shell progr
 
 1. Run this software to reproduce the results from Replay-Attack dataset:
 >     
->     spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/replayattack --facelocations_path datasets/replayattack/face-locations --output ./working --protocol intra_dataset
+>     spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/replayattack --output_path ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results from CASIA FASD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 1 --dataset_path datasets/casia --facelocations_path datasets/casia/face-locations --output ./working --protocol intra_dataset
+>     spectralcubesantispoofing.py --dataset 1 --dataset_path datasets/casia --output_path ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results from 3DMAD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 2 --dataset_path datasets/3dmad --facelocations_path datasets/3dmad/face-locations --output ./working --protocol intra_dataset
+>     spectralcubesantispoofing.py --dataset 2 --dataset_path datasets/3dmad --output_path ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results from UVAD dataset:

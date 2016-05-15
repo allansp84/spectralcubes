@@ -290,7 +290,7 @@ class PLSClassifier(object):
                 resps = model[icat].predict(self.test_set['data'])[:, 0]
                 predictions[:, icat] = resps
 
-            outputs = {'predictions': predictions, 'ground_truth': self.test_set['labels']}
+            outputs = {'predictions': predictions, 'gt': self.test_set['labels']}
 
         else:
             sys.exit('-- model not found! Please, execute training again!')

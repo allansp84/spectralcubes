@@ -46,7 +46,7 @@ class MidLevelFeatures(object):
         self.coding_poling = coding_poling
         self.codebook_size = codebook_size
         self.file_type = file_type
-        self.variance = 0.08
+        self.variance = 0.04
         self.n_jobs = n_jobs
 
         if codebook_path is None:

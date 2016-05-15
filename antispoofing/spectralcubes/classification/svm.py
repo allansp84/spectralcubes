@@ -284,7 +284,7 @@ class SVMClassifier(object):
             model = self.model
             for icat, cat in enumerate(categories):
                 cat_index[cat] = icat
-                resps = model[icat].decision_function(self.test_set['data'])
+                resps = model[icat].decision_function(self.test_set['data'])[:, 0]
                 predictions[:, icat] = resps
 
             outputs = {'predicted_scores': predictions, 'gt': self.test_set['labels']}

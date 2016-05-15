@@ -453,10 +453,10 @@ class Classification(object):
             outputs = {}
 
             classifier.test_set = test_set
-            outputs = classifier.testing
+            outputs = classifier.testing()
 
             labels = outputs['gt']
-            predicted_scores = outputs['predicted_scores']
+            predicted_scores = outputs['predicted_scores'][:, 1]
 
             neg, pos = self._get_score_distributions(labels, predicted_scores)
 

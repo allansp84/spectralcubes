@@ -31,19 +31,15 @@ class CrossDatasetProtocol(Protocol):
         if self.data_a.__class__.__name__.lower() == 'replayattack':
 
             llf_search_space_a = dict(NTV=300, LGF=1, M=7)
-            mlf_search_space_a = dict(CS='kmeans', SDD='class_based', DS=160, CP='softmax')
-            # mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
+            mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
 
         elif self.data_a.__class__.__name__.lower() == 'casia':
 
             llf_search_space_a = {'NTV': 1200, 'LGF': 1, 'M': 7}
-            mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 160, 'CP': 'softmax'}
-            # mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
+            mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
 
         elif self.data_a.__class__.__name__.lower() == 'maskattack':
 
-            # llf_search_space_a = {'NTV': 1200, 'LGF': 0, 'M': 7}
-            # mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'unified', 'DS': 160, 'CP': 'softmax'}
             llf_search_space_a = {'NTV': 1200, 'LGF': 1, 'M': 7}
             mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
 
@@ -51,7 +47,6 @@ class CrossDatasetProtocol(Protocol):
 
             llf_search_space_a = {'NTV': 1200, 'LGF': 1, 'M': 7}
             mlf_search_space_a = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
-            # mlf_search_space_a = {'CS': 'random', 'SDD': 'class_based', 'DS': 360, 'CP': 'softmax'}
 
         else:
             print 'Put in TDTProtocol.build_search_space()\
@@ -60,26 +55,21 @@ class CrossDatasetProtocol(Protocol):
 
         if self.data_b.__class__.__name__.lower() == 'replayattack':
 
-            # mlf_search_space_b = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
             llf_search_space_b = {'NTV': 300, 'LGF': 1, 'M': 7}
-            mlf_search_space_b = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 160, 'CP': 'softmax'}
+            mlf_search_space_b = {'CS': 'kmeans', 'SDD': 'class_based', 'DS': 320, 'CP': 'softmax'}
 
         elif self.data_b.__class__.__name__.lower() == 'casia':
 
-            # mlf_search_space_b = {'CS': 'kmeans', 'SDD': 'class_based','DS': 320, 'CP': 'softmax'}
             llf_search_space_b = dict(NTV=1200, LGF=1, M=7)
-            mlf_search_space_b = dict(CS='kmeans', SDD='class_based', DS=160, CP='softmax')
+            mlf_search_space_b = {'CS': 'kmeans', 'SDD': 'class_based','DS': 320, 'CP': 'softmax'}
 
         elif self.data_b.__class__.__name__.lower() == 'maskattack':
 
-            # llf_search_space_b = {'NTV': 1200, 'LGF': 0, 'M': 7}
-            # mlf_search_space_b = {'CS': 'kmeans', 'SDD': 'unified', 'DS': 160, 'CP': 'softmax'}
             llf_search_space_b = dict(NTV=1200, LGF=1, M=7)
             mlf_search_space_b = dict(CS='kmeans', SDD='class_based', DS=320, CP='softmax')
 
         elif self.data_b.__class__.__name__.lower() == 'uvad':
 
-            # mlf_search_space_b = {'CS': 'random', 'SDD': 'class_based', 'DS': 360, 'CP': 'softmax'}
             llf_search_space_b = dict(NTV=1200, LGF=1, M=7)
             mlf_search_space_b = dict(CS='kmeans', SDD='class_based', DS=320, CP='softmax')
 
@@ -119,7 +109,7 @@ class CrossDatasetProtocol(Protocol):
         start = get_time()
 
         np.random.seed(7)
-        sd = int(np.random.rand(1, 1)[1, 1] * 1e9)
+        sd = int(np.random.rand(1, 1)[0, 0] * 1e9)
         self.n_jobs = N_JOBS
 
         fnames_a = self.data_a.metainfo['all_fnames']
