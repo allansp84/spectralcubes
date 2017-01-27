@@ -16,13 +16,13 @@ This software runs on Linux Operating systems, and we tested it by using Ubuntu 
 
 #### Instaling dependences
 
-We recommend use virtualenvs to create a proper environment to run this software. Follows the command lines to configure a virtual environment to run this software:
+We recommend using the virtualenv tool to create a proper environment to run this software. Follows the command lines to configure a virtual environment to run this software:
 
-1. Installing virualenv and virtualenvwrapper:
+1. Installing the virualenv and virtualenvwrapper tools:
 >     pip install virtualenv
 >     pip install virtualenvwrapper
 
-2. Installing depedences of this sofwware:
+2. Installing all depedences of our sofwware:
 >     mkvirtualenv spectralcubes-env   # -- create a new environment
 >     workon spectralcubes-env         # -- active the virtualenv
 >     ./install_requirements.sh        # -- run the bash script provided in this repository (https://github.com/allansp84/spectralcubes/blob/master/install_requirements.sh)
