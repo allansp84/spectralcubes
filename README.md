@@ -7,12 +7,27 @@ Despite important recent advances, the vulnerability of biometric systems to spo
 
 ### Requirements to Run this Software
 
-The OpenCV Package 2.4.11 or later is required for use this software.
+The OpenCV Package 2.4.11 or later is required to use this software.
 
 The other requirements are python packages and are listed in **requirements.txt**.
 We provide a script *(install_requirements.sh)*, to install theses python requirements via **pip command**.    
 
 This software runs on Linux Operating systems, and we tested it by using Ubuntu 14.04 LTS.
+
+#### Instaling dependences
+
+We recommend use virtualenvs to create a proper environment to run this software. Follows the command lines to configure a virtual environment to run this software:
+
+1. Installing virualenv and virtualenvwrapper:
+>     pip install virtualenv
+>     pip install virtualenvwrapper
+
+2. Installing depedences of this sofwware:
+>     mkvirtualenv spectralcubes-env   # -- create a new environment
+>     workon spectralcubes-env         # -- active the virtualenv
+>     ./install_requirements.sh        # -- run the bash script provided in this repository (https://github.com/allansp84/spectralcubes/blob/master/install_requirements.sh)
+
+Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrapper.sh to your shell startup file. Please, change the path to virtualenvwrapper.sh depending on where it was installed by pip. You can find more information about virtualenv and virtualenvwrapper in https://virtualenv.pypa.io/en/stable/ and https://virtualenv.pypa.io/en/stable/, respectively.
 
 ### How to Use this Software?
 
