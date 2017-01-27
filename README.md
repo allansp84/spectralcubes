@@ -31,7 +31,7 @@ Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrap
 
 ### How to Use this Software?
 
-This software run only by command line interfaces (CLIs) such as the shell program (e.g., sh, bash, ksh). To see the usage of this sofware, use the follow command:
+This software runs only by command line interfaces (CLIs) such as the shell program (e.g., sh, bash, ksh). To see the usage of this software, use the follow command:
 
 >     spectralcubesantispoofing.py --help
 
