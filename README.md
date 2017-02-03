@@ -23,17 +23,18 @@ Except for the OpenCV, these software products are python packages that can be e
 We recommend using the virtualenv tool to create an appropriate environment to install and run our software. Follows the command lines to do this:
 
 1. Installing the virtualenv and virtualenvwrapper tools:
->     pip install virtualenv
->     pip install virtualenvwrapper
+>     $ sudo apt-get install python-pip
+>     $ pip install virtualenv
+>     $ pip install virtualenvwrapper
 
 2. Installing all depedences of our sofwware:
->     mkvirtualenv spectralcubes-env   # -- create a new environment
->     workon spectralcubes-env         # -- active the virtualenv
->     ./install_requirements.sh        # -- run the bash script provided in this repository (https://github.com/allansp84/spectralcubes/blob/master/install_requirements.sh)
+>     $ mkvirtualenv spectralcubes-env                      # -- create a new environment
+>     $ workon spectralcubes-env                            # -- active the virtualenv
+>     (spectralcubes-env)$ ./install_requirements.sh        # -- run the bash script provided in this repository (https://github.com/allansp84/spectralcubes/blob/master/install_requirements.sh)
 
 3. Installing our software:
->     workon spectralcubes-env         # -- active the virtualenv 
->     python setup.py install          # -- install our software in your machine
+>     $ workon spectralcubes-env                            # -- active the virtualenv 
+>     (spectralcubes-env)$ python setup.py install          # -- install our software in your machine
 
 Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrapper.sh to your shell startup file. Please, change the path to virtualenvwrapper.sh depending on where it was installed by pip. You can find more information about virtualenv and virtualenvwrapper in https://virtualenv.pypa.io/en/stable/ and https://virtualenv.pypa.io/en/stable/, respectively.
 
@@ -42,28 +43,29 @@ Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrap
 
 After installing our software, we can use it via command line interfaces (CLIs).  To see how to use this software, execute the following command in any directory, since it is already installed in your system:
 
->     spectralcubesantispoofing.py --help
+>     $ workon spectralcubes-env
+>     (spectralcubes-env)$ spectralcubesantispoofing.py --help
 
 ### Examples
 
 1. Run this software to reproduce the results from Replay-Attack dataset:
 >     
->     spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/replayattack --output_path ./working --protocol intra_dataset
+>     (spectralcubes-env)$ spectralcubesantispoofing.py --dataset 0 --dataset_path datasets/replayattack --output_path ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results from CASIA FASD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 1 --dataset_path datasets/casia --output_path ./working --protocol intra_dataset
+>     (spectralcubes-env)$ spectralcubesantispoofing.py --dataset 1 --dataset_path datasets/casia --output_path ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results from 3DMAD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 2 --dataset_path datasets/3dmad --output_path ./working --protocol intra_dataset
+>     (spectralcubes-env)$ spectralcubesantispoofing.py --dataset 2 --dataset_path datasets/3dmad --output_path ./working --protocol intra_dataset
 >     
 
 1. Run this software to reproduce the results from UVAD dataset:
 >     
->     spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/uvad --output ./working --protocol intra_dataset
+>     (spectralcubes-env)$ spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/uvad --output ./working --protocol intra_dataset
 >     
 
 ### Please, Cite our Work!
