@@ -16,7 +16,7 @@ The following software is required to run SpectralTemporalCubes:
 8. [Matplotlib-1.3.1](http://matplotlib.org/)
 9. [Bob Package](https://www.idiap.ch/software/bob/)
 
-Except for the OpenCV, these software products are python packages that can be easily installed using pip. We provide a script *(install_requirements.sh)* to install these python requirements via **pip command**. SpectralTemporalCubes runs on Linux Operating systems, and we tested it by using Ubuntu 14.04 LTS.
+Except for the OpenCV, these software products are python packages that can be easily installed using pip. We provide a script *(install_requirements.sh)* to install these python requirements via **pip command**. SpectralTemporalCubes runs on Linux Operating systems, and we tested it on Ubuntu 14.04 LTS.
 
 #### Installing our software and its dependences
 
