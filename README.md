@@ -26,6 +26,7 @@ We recommend using the virtualenv tool to create an appropriate environment to i
 >     $ sudo apt-get install python-pip
 >     $ pip install virtualenv
 >     $ pip install virtualenvwrapper
+*Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrapper.sh to your shell startup file. Please, change the path to virtualenvwrapper.sh depending on where it was installed by pip. You can find more information about virtualenv and virtualenvwrapper in https://virtualenv.pypa.io/en/stable/ and https://virtualenv.pypa.io/en/stable/, respectively.*
 
 2. Installing all depedences of our sofwware:
 >     $ mkvirtualenv spectralcubes-env                      # -- create a new environment
@@ -34,8 +35,6 @@ We recommend using the virtualenv tool to create an appropriate environment to i
 
 3. Installing our software:
 >     (spectralcubes-env)$ python setup.py install          # -- install our software in your machine
-
-Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrapper.sh to your shell startup file. Please, change the path to virtualenvwrapper.sh depending on where it was installed by pip. You can find more information about virtualenv and virtualenvwrapper in https://virtualenv.pypa.io/en/stable/ and https://virtualenv.pypa.io/en/stable/, respectively.
 
 
 ### How to Use this Software?
