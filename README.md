@@ -31,11 +31,11 @@ We recommend using the virtualenv tool to create an appropriate environment to i
 >     workon spectralcubes-env         # -- active the virtualenv
 >     ./install_requirements.sh        # -- run the bash script provided in this repository (https://github.com/allansp84/spectralcubes/blob/master/install_requirements.sh)
 
-Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrapper.sh to your shell startup file. Please, change the path to virtualenvwrapper.sh depending on where it was installed by pip. You can find more information about virtualenv and virtualenvwrapper in https://virtualenv.pypa.io/en/stable/ and https://virtualenv.pypa.io/en/stable/, respectively.
-
 3. Installing our software:
 >     workon spectralcubes-env         # -- active the virtualenv 
 >     python setup.py install          # -- install our software in your machine
+
+Obs.: It is necessary to add the command to source /usr/local/bin/virtualenvwrapper.sh to your shell startup file. Please, change the path to virtualenvwrapper.sh depending on where it was installed by pip. You can find more information about virtualenv and virtualenvwrapper in https://virtualenv.pypa.io/en/stable/ and https://virtualenv.pypa.io/en/stable/, respectively.
 
 
 ### How to Use this Software?
