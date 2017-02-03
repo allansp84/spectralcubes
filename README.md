@@ -1,6 +1,6 @@
 # Face Spoofing Detection Through Visual Codebooks of Spectral Temporal Cubes
 
-**SpectralTemporalCubes** is an open source python API for face spoofing detection. This is an implementation of our work published in *IEEE Transactions on Image Processing*, whose BibTeX and link to the paper are available in this document.
+**SpectralTemporalCubes** is an open source python API for face spoofing detection. This is an implementation of our work published in *IEEE Transactions on Image Processing*, whose reference to the original manuscript and its BibTeX are available in this document.
 
 ### Requirements to Run this Software
 
