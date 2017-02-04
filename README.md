@@ -18,7 +18,7 @@ The following software is required to run SpectralTemporalCubes:
 
 Except for the OpenCV, these software products are python packages that can be easily installed using pip. We provide a script *(install_requirements.sh)* to install these python requirements via **pip command**. SpectralTemporalCubes runs on Linux Operating systems, and we tested it on Ubuntu 14.04 LTS.
 
-#### Installing our software and its dependences
+#### Installing our software and its dependencies
 
 We recommend using the virtualenv tool to create an appropriate environment to install and run our software. Follows the command lines to do this:
 
