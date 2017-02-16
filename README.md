@@ -62,7 +62,7 @@ After installing our software, we can use it via command line interfaces (CLIs).
 
 1. Run this software to reproduce the results from UVAD dataset:
 >     
->     (spectralcubes-env)$ spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/uvad --output ./working --protocol intra_dataset
+>     (spectralcubes-env)$ spectralcubesantispoofing.py --dataset 3 --dataset_path datasets/uvad/release_1 --output ./working --protocol intra_dataset
 >     
 
 ### Reference
