@@ -265,6 +265,9 @@ def main():
     group_c.add_argument("--frame_numbers", type=int, metavar="", default=0,
                         help="Number of frames considered during execution of the method (default=%(default)s)\n\n")
 
+    group_c.add_argument('--n_jobs', type=int, metavar='int', default=N_JOBS,
+                        help='Number of jobs (default=%(default)s).')
+
     opts = parser.parse_args()
 
     if opts.anova:
