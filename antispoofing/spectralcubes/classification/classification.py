@@ -634,6 +634,11 @@ class Classification(object):
 
     def make_det_plots(self, scores, dataset):
 
+        try:
+            os.makedirs('dets')
+        except Exception:
+            pass
+
         title_font = {'size': '18', 'color': 'black', 'weight': 'normal',
                       'verticalalignment': 'bottom'}  # Bottom vertical alignment for more space
         axis_font = {'size': '14'}
