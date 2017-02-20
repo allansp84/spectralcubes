@@ -10,10 +10,10 @@ The following software is required to run SpectralTemporalCubes:
 2. [joblib-0.8.4](https://pythonhosted.org/joblib/)
 3. [Pillow-2.5.3](https://python-pillow.org/)
 4. [Numpy-1.8.1](http://www.numpy.org/)
-5. [Scipy-0.13.3](https://www.scipy.org/)
+5. [Matplotlib-1.5.1](http://matplotlib.org/)
 6. [Scikit-image-0.10.1](http://scikit-image.org/)
 7. [Scikit-learn-0.15.0](http://scikit-learn.org/)
-8. [Matplotlib-1.3.1](http://matplotlib.org/)
+8. [Scipy-0.13.3](https://www.scipy.org/)
 9. [Bob Package](https://www.idiap.ch/software/bob/)
 
 Except for the OpenCV, these software products are python packages that can be easily installed using pip. We provide a script *(install_requirements.sh)* to install these python requirements via **pip command**. SpectralTemporalCubes runs on Linux Operating systems, and we tested it on Ubuntu 14.04 LTS.
