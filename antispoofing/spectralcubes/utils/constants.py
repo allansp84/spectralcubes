@@ -35,7 +35,7 @@ MIN_NEIGHBORS = 4
 _current_path = os.path.abspath(os.path.dirname(__file__))
 CASCADE_PATH = os.path.join(_current_path, 'haarcascade_frontalface_default.xml')
 
-N_JOBS = (cpu_count()/4) if ((cpu_count()) > 4) else 1
+N_JOBS = (cpu_count()/3) if ((cpu_count()) > 3) else 1
 
 
 class CONST:
