@@ -86,9 +86,5 @@ RUN pip install --requirement requirements.txt \
 
 WORKDIR $HOME_DIR
 
-# -- creating volume
-RUN mkdir -p /datasets
-VOLUME /datasets
-
 # -- clean up opencv
 RUN rm -rf $INSTALLERS_DIR
