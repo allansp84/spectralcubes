@@ -67,12 +67,14 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D WITH_OPENMP=YES \
     -D WITH_CUBLAS=YES \
     -D INSTALL_C_EXAMPLES=ON \
-    -DINSTALL_PYTHON_EXAMPLES=ON \
-    -DBUILD_EXAMPLES=ON \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D BUILD_EXAMPLES=ON \
     -D WITH_1394=OFF \
     ..
 
 RUN make -j"$(nproc)" && make install
+
+RUN python -c "import cv2; print cv2.__version__"
 
 WORKDIR $HOME_DIR
 
@@ -81,8 +83,7 @@ RUN git clone https://github.com/allansp84/spectralcubes.git
 
 # -- installing spectralcubes dependencies
 WORKDIR spectralcubes
-RUN pip install --requirement requirements.txt \
-    && python setup.py install
+RUN pip install --requirement requirements.txt && python setup.py install
 
 WORKDIR $HOME_DIR
 
