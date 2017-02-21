@@ -84,5 +84,11 @@ WORKDIR spectralcubes
 RUN pip install --requirement requirements.txt \
     && python setup.py install
 
+WORKDIR $HOME_DIR
+
+# -- creating volume
+RUN mkdir -p /datasets
+VOLUME /datasets
+
 # -- clean up opencv
 RUN rm -rf $INSTALLERS_DIR
