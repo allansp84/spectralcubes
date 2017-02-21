@@ -13,7 +13,7 @@ setup(
     description='Face Spoofing Detection Through Visual Codebooks of Spectral Temporal Cubes',
     long_description=open('README.md').read(),
 
-    packages=find_packages(where='antispoofing.spectralcubes', exclude=['tests']),
+    packages=find_packages(exclude=['tests']),
 
     entry_points={
         'console_scripts': [
