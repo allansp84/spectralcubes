@@ -97,6 +97,6 @@ If you use this software, please cite our paper published in *IEEE Transactions 
 
 ### License
 
-This software is available under condition of the [AGPL-3.0 Licence](https://github.com/allansp84/visualrhythm-antispoofing/blob/master/LICENSE).
+This software is available under condition of the [AGPL-3.0 Licence](https://github.com/allansp84/spectralcubes/blob/master/LICENSE).
 
 Copyright (c) 2015, Allan Pinto, William Robson Schwartz, Helio Pedrini, and Anderson Rocha
