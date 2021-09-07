@@ -1,5 +1,5 @@
 joblib==0.8.4
-Pillow==2.5.3
+Pillow==8.3.2
 numpy==1.8.1
 matplotlib==1.5.1
 scikit-image==0.10.1
